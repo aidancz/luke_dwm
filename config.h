@@ -62,7 +62,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
 static int nmaster     = 1;    /* number of clients in master area */
 static int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
@@ -179,10 +179,10 @@ static Key keys[] = {
 	{ MODKEY,			XK_VoidSymbol,		setlayout,	{.v = &layouts[6]} }, // centermaster
 	{ MODKEYC,			XK_VoidSymbol,		setlayout,	{.v = &layouts[7]} }, // centermaster_master float
 	{ MODKEY,			XK_VoidSymbol,		setlayout,	{.v = &layouts[8]} }, // float (aka normie)
-	{ MODKEYA,			XK_k,			incnmaster,	{.i = +1 } },
-	{ MODKEYA,			XK_j,			incnmaster,	{.i = -1 } },
-	{ MODKEYA,			XK_h,			setmfact,	{.f = -0.05} },
-	{ MODKEYA,			XK_l,			setmfact,	{.f = +0.05} },
+	{ MODKEYS,			XK_k,			incnmaster,	{.i = +1 } },
+	{ MODKEYS,			XK_j,			incnmaster,	{.i = -1 } },
+	{ MODKEYS,			XK_h,			setmfact,	{.f = -0.05} },
+	{ MODKEYS,			XK_l,			setmfact,	{.f = +0.05} },
 	{ MODKEY,			XK_VoidSymbol,		togglebar,	{0} },
 	{ MODKEY,			XK_VoidSymbol,		togglegaps,	{0} },
 	{ MODKEY,			XK_VoidSymbol,		togglesmartgaps,{0} },
@@ -199,13 +199,13 @@ static Key keys[] = {
 	{ MODKEY,			XK_Return,		spawn,		{.v = termcmd } },
 	{ MODKEYC,			XK_Return,		togglescratch,	{.ui = 0} },
 	{ MODKEYA,			XK_Return,		togglescratch,	{.ui = 1} },
-	{ MODKEYC,			XK_n,			spawn,		{.v = (const char*[]){ "nutstore", NULL } } },
+	{ MODKEYC,			XK_c,			spawn,		{.v = (const char*[]){ "nutstore", NULL } } },
 //	{ MODKEY,			XK_c,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
 //	{ MODKEY,			XK_m,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } },
 //	{ MODKEY,			XK_n,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "nvim", "-c", "VimwikiIndex", NULL } } },
 	{ MODKEY,			XK_i,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } },
 //	{ MODKEY,			XK_r,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } },
-//	{ MODKEY,			XK_w,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "sudo", "nmtui", NULL } } },
+	{ MODKEYC,			XK_n,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "sudo", "nmtui", NULL } } },
 	{ MODKEY,			XK_w,			spawn,		{.v = (const char*[]){ BROWSER, NULL } } },
 	{ MODKEY,			XK_o,			spawn,		{.v = (const char*[]){ "dmenu_run", NULL } } },
 	{ MODKEYC,			XK_o,			spawn,		{.v = (const char*[]){ "dmenuunicode", NULL } } },
