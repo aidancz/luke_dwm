@@ -228,12 +228,12 @@ static Key keys[] = {
 // newsboat_rss
 //	{ MODKEYS,			XK_n,			spawn,		SHCMD(TERMINAL " -e newsboat ; pkill -RTMIN+6 dwmblocks") },
 // maim_record
-//	{ 0,				XK_Print,		spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
-//	{ ShiftMask,			XK_Print,		spawn,		{.v = (const char*[]){ "maimpick", NULL } } },
-//	{ MODKEY,			XK_Print,		spawn,		{.v = (const char*[]){ "dmenurecord", NULL } } },
-//	{ MODKEYS,			XK_Print,		spawn,		{.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
-//	{ MODKEY,			XK_Delete,		spawn,		{.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
-//	{ MODKEY,			XK_Scroll_Lock,		spawn,		SHCMD("killall screenkey || screenkey &") },
+	{ 0,				XK_Print,		spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
+	{ ShiftMask,			XK_Print,		spawn,		{.v = (const char*[]){ "maimpick", NULL } } },
+	{ MODKEY,			XK_Print,		spawn,		{.v = (const char*[]){ "dmenurecord", NULL } } },
+	{ MODKEYS,			XK_Print,		spawn,		{.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
+	{ MODKEY,			XK_Delete,		spawn,		{.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
+	{ MODKEY,			XK_Scroll_Lock,		spawn,		SHCMD("killall screenkey || screenkey &") },
 // unknown
 //	{ MODKEY,			XK_minus,		spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") },
 //	{ MODKEYS,			XK_minus,		spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 15%-; kill -44 $(pidof dwmblocks)") },
