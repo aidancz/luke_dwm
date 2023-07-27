@@ -168,14 +168,14 @@ static Key keys[] = {
 	{ MODKEYC,			XK_h,			shifttag,	{ .i = -1 } },
 	{ MODKEY,			XK_l,			shiftview,	{ .i = 1 } },
 	{ MODKEYC,			XK_l,			shifttag,	{ .i = 1 } },
-	{ MODKEY,			XK_n,			view,		{0} }, // view previous tag
+	{ MODKEY,			XK_o,			view,		{0} }, // view previous tag
 
-	{ MODKEY,			XK_a,			setlayout,	{.v = &layouts[0]} }, // tile
-	{ MODKEYC,			XK_a,			setlayout,	{.v = &layouts[1]} }, // tile_master on top
+	{ MODKEY,			XK_f,			setlayout,	{.v = &layouts[0]} }, // tile
+	{ MODKEYC,			XK_f,			setlayout,	{.v = &layouts[1]} }, // tile_master on top
 	{ MODKEY,			XK_VoidSymbol,		setlayout,	{.v = &layouts[2]} }, // fibonacci
 	{ MODKEY,			XK_VoidSymbol,		setlayout,	{.v = &layouts[3]} }, // dwindle
-	{ MODKEYC,			XK_s,			setlayout,	{.v = &layouts[4]} }, // monocle_master on left
-	{ MODKEY,			XK_s,			setlayout,	{.v = &layouts[5]} }, // monocle
+	{ MODKEY,			XK_d,			setlayout,	{.v = &layouts[4]} }, // monocle_master on left
+	{ MODKEYC,			XK_d,			setlayout,	{.v = &layouts[5]} }, // monocle
 	{ MODKEY,			XK_VoidSymbol,		setlayout,	{.v = &layouts[6]} }, // centermaster
 	{ MODKEYC,			XK_VoidSymbol,		setlayout,	{.v = &layouts[7]} }, // centermaster_master float
 	{ MODKEY,			XK_VoidSymbol,		setlayout,	{.v = &layouts[8]} }, // float (aka normie)
@@ -191,26 +191,27 @@ static Key keys[] = {
 	{ MODKEY,			XK_VoidSymbol,		defaultgaps,	{0} },
 
 	{ MODKEY,			XK_q,			killclient,	{0} }, // window close
-	{ MODKEY,			XK_period,		zoom,		{0} }, // window master
-	{ MODKEY,			XK_space,		togglefloating,	{0} }, // window float
-	{ MODKEY,			XK_f,			togglefullscr,	{0} }, // window full screen
-	{ MODKEY,			XK_comma,		togglesticky,	{0} }, // window sticky
+	{ MODKEY,			XK_n,			zoom,		{0} }, // window first (if already first, move second window to first)
+	{ MODKEY,			XK_Escape,		togglefloating,	{0} }, // window float
+	{ MODKEY,			XK_s,			togglesticky,	{0} }, // window sticky
+	{ MODKEY,			XK_a,			togglefullscr,	{0} }, // window full screen
 
 	{ MODKEY,			XK_Return,		spawn,		{.v = termcmd } },
-	{ MODKEYC,			XK_Return,		togglescratch,	{.ui = 0} },
-	{ MODKEYA,			XK_Return,		togglescratch,	{.ui = 1} },
+	{ MODKEY,			XK_space,		togglescratch,	{.ui = 0} },
+//	{ MODKEYA,			XK_Return,		togglescratch,	{.ui = 1} },
 	{ MODKEY,			XK_e,			spawn,		{.v = (const char*[]){ "emacsclient", "-c", "-a", "emacs", NULL } } },
-	{ MODKEYC,			XK_c,			spawn,		{.v = (const char*[]){ "nutstore", NULL } } },
+// https://github.com/daviwil/emacs-from-scratch/blob/master/show-notes/Emacs-Tips-08.org#opening-files-from-the-command-line
+//	{ MODKEYC,			XK_c,			spawn,		{.v = (const char*[]){ "nutstore", NULL } } },
 //	{ MODKEY,			XK_c,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
 //	{ MODKEY,			XK_m,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } },
 //	{ MODKEY,			XK_n,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "nvim", "-c", "VimwikiIndex", NULL } } },
-	{ MODKEY,			XK_i,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } },
+//	{ MODKEY,			XK_i,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } },
 //	{ MODKEY,			XK_r,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } },
-	{ MODKEYC,			XK_n,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "sudo", "nmtui", NULL } } },
+//	{ MODKEYC,			XK_n,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "sudo", "nmtui", NULL } } },
 	{ MODKEY,			XK_w,			spawn,		{.v = (const char*[]){ BROWSER, NULL } } },
-	{ MODKEY,			XK_o,			spawn,		{.v = (const char*[]){ "dmenu_run", NULL } } },
-	{ MODKEYC,			XK_o,			spawn,		{.v = (const char*[]){ "dmenuunicode", NULL } } },
-//	{ MODKEYC,			XK_p,			spawn,		{.v = (const char*[]){ "passmenu", NULL } } },
+	{ MODKEY,			XK_i,			spawn,		{.v = (const char*[]){ "dmenu_run", NULL } } },
+	{ MODKEYC,			XK_i,			spawn,		{.v = (const char*[]){ "dmenuunicode", NULL } } },
+	{ MODKEYC,			XK_p,			spawn,		{.v = (const char*[]){ "passmenu", NULL } } },
 // ncmpcpp_music
 //	{ MODKEY,			XK_p,			spawn,		{.v = (const char*[]){ "mpc", "toggle", NULL } } },
 //	{ MODKEY,			XK_bracketleft,		spawn,		{.v = (const char*[]){ "mpc", "seek", "-10", NULL } } },
