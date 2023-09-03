@@ -52,13 +52,13 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	*/
-	/* class    instance      title       	 tags mask    isfloating   isterminal  noswallow  monitor */
-	{ "Gimp",     NULL,       NULL,       	    1 << 8,       0,           0,         0,        -1 },
-	{ TERMCLASS,  NULL,       NULL,       	    0,            0,           1,         0,        -1 },
-	{ NULL,       NULL,       "Event Tester",   0,            0,           0,         1,        -1 },
-	{ TERMCLASS,      "bg",        NULL,       	    1 << 7,       0,           1,         0,        -1 },
-	{ TERMCLASS,      "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
-	{ TERMCLASS,      "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
+	/* class	instance	title			tags mask	isfloating	isterminal	noswallow	monitor */
+	{ "Gimp",	NULL,		NULL,			1 << 8,	0,		0,		0,		-1 },
+	{ TERMCLASS,	NULL,		NULL,			0,		0,		1,		0,		-1 },
+	{ TERMCLASS,	"bg",		NULL,			1 << 7,	0,		1,		0,		-1 },
+	{ TERMCLASS,	"spterm",	NULL,			SPTAG(0),	1,		1,		0,		-1 },
+	{ TERMCLASS,	"spcalc",	NULL,			SPTAG(1),	1,		1,		0,		-1 },
+	{ NULL,	NULL,		"Event Tester",	0,		0,		0,		1,		-1 },
 };
 
 /* layout(s) */
@@ -199,7 +199,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_Return,		spawn,		{.v = termcmd } },
 	{ MODKEY,			XK_space,		togglescratch,	{.ui = 0} },
 //	{ MODKEYA,			XK_Return,		togglescratch,	{.ui = 1} },
-	{ MODKEY,			XK_e,			spawn,		{.v = (const char*[]){ "emacsclient", "-c", "-a", "emacs", NULL } } },
+	{ MODKEY,			XK_e,			spawn,		{.v = (const char*[]){ "emacsclient", "-c", "-a", "", NULL } } },
 // https://github.com/daviwil/emacs-from-scratch/blob/master/show-notes/Emacs-Tips-08.org#opening-files-from-the-command-line
 //	{ MODKEYC,			XK_c,			spawn,		{.v = (const char*[]){ "nutstore", NULL } } },
 //	{ MODKEY,			XK_c,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
