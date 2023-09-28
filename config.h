@@ -199,8 +199,10 @@ static Key keys[] = {
 	{ MODKEY,			XK_Return,		spawn,		{.v = termcmd } },
 	{ MODKEY,			XK_space,		togglescratch,	{.ui = 0} },
 //	{ MODKEYA,			XK_Return,		togglescratch,	{.ui = 1} },
-	{ MODKEY,			XK_e,			spawn,		{.v = (const char*[]){ "emacsclient", "-c", "-a", "", NULL } } },
+//	{ MODKEY,			XK_e,			spawn,		{.v = (const char*[]){ "emacsclient", "-c", "-a", "", NULL } } },
 // https://github.com/daviwil/emacs-from-scratch/blob/master/show-notes/Emacs-Tips-08.org#opening-files-from-the-command-line
+	{ MODKEY,			XK_e,			spawn,		{.v = (const char*[]){ "emacsclient", "-c", NULL } } },
+	{ MODKEYS,			XK_e,			spawn,		{.v = (const char*[]){ "emacs", NULL } } },
 //	{ MODKEYC,			XK_c,			spawn,		{.v = (const char*[]){ "nutstore", NULL } } },
 //	{ MODKEY,			XK_c,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
 //	{ MODKEY,			XK_m,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } },
