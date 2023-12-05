@@ -96,9 +96,9 @@ static const Layout layouts[] = {
 	{ MODKEYC,			KEY,		tag,		{.ui = 1 << TAG} }, \
 	{ MODKEYS,			KEY,		toggletag,	{.ui = 1 << TAG} },
 #define STACKKEYS(MOD,ACTION) \
-	{ MOD,	XK_j,	ACTION##stack,	{.i = INC(+1) } }, \
-	{ MOD,	XK_k,	ACTION##stack,	{.i = INC(-1) } }, \
-	{ MOD,	XK_m,	ACTION##stack,	{.i = 0 } }, \
+	{ MOD,	XK_n,	ACTION##stack,	{.i = INC(+1) } }, \
+	{ MOD,	XK_p,	ACTION##stack,	{.i = INC(-1) } }, \
+	{ MOD,	XK_a,	ACTION##stack,	{.i = 0 } }, \
 	/* { MOD, XK_grave, ACTION##stack, {.i = PREVSEL } }, \ */
 	/* { MOD, XK_a,     ACTION##stack, {.i = 1 } }, \ */
 	/* { MOD, XK_z,     ACTION##stack, {.i = 2 } }, \ */
@@ -179,10 +179,10 @@ static Key keys[] = {
 	{ MODKEY,			XK_VoidSymbol,		setlayout,	{.v = &layouts[6]} }, // centermaster
 	{ MODKEYC,			XK_VoidSymbol,		setlayout,	{.v = &layouts[7]} }, // centermaster_master float
 	{ MODKEY,			XK_VoidSymbol,		setlayout,	{.v = &layouts[8]} }, // float (aka normie)
-	{ MODKEYS,			XK_k,			incnmaster,	{.i = +1 } },
-	{ MODKEYS,			XK_j,			incnmaster,	{.i = -1 } },
-	{ MODKEYS,			XK_h,			setmfact,	{.f = -0.05} },
-	{ MODKEYS,			XK_l,			setmfact,	{.f = +0.05} },
+	{ MODKEY,			XK_equal,		incnmaster,	{.i = +1 } },
+	{ MODKEY,			XK_minus,		incnmaster,	{.i = -1 } },
+	{ MODKEY,			XK_bracketleft,		setmfact,	{.f = -0.05} },
+	{ MODKEY,			XK_bracketright,	setmfact,	{.f = +0.05} },
 	{ MODKEY,			XK_VoidSymbol,		togglebar,	{0} },
 	{ MODKEY,			XK_VoidSymbol,		togglegaps,	{0} },
 	{ MODKEY,			XK_VoidSymbol,		togglesmartgaps,{0} },
@@ -191,13 +191,13 @@ static Key keys[] = {
 	{ MODKEY,			XK_VoidSymbol,		defaultgaps,	{0} },
 
 	{ MODKEY,			XK_q,			killclient,	{0} }, // window close
-	{ MODKEY,			XK_n,			zoom,		{0} }, // window first (if already first, move second window to first)
-	{ MODKEY,			XK_Escape,		togglefloating,	{0} }, // window float
-	{ MODKEY,			XK_s,			togglesticky,	{0} }, // window sticky
-	{ MODKEY,			XK_a,			togglefullscr,	{0} }, // window full screen
+	{ MODKEY,			XK_m,			zoom,		{0} }, // window first (if already first, move second window to first)
+	{ MODKEY,			XK_backslash,		togglefloating,	{0} }, // window float
+	{ MODKEY,			XK_apostrophe,		togglesticky,	{0} }, // window sticky
+	{ MODKEY,			XK_grave,		togglefullscr,	{0} }, // window full screen
 
-	{ MODKEY,			XK_Return,		spawn,		{.v = termcmd } },
-	{ MODKEY,			XK_space,		togglescratch,	{.ui = 0} },
+	{ MODKEY,			XK_space,		spawn,		{.v = termcmd } },
+	{ MODKEY,			XK_period,		togglescratch,	{.ui = 0} },
 //	{ MODKEYA,			XK_Return,		togglescratch,	{.ui = 1} },
 //	{ MODKEY,			XK_e,			spawn,		{.v = (const char*[]){ "emacsclient", "-c", "-a", "", NULL } } },
 // https://github.com/daviwil/emacs-from-scratch/blob/master/show-notes/Emacs-Tips-08.org#opening-files-from-the-command-line
@@ -212,8 +212,8 @@ static Key keys[] = {
 //	{ MODKEYC,			XK_n,			spawn,		{.v = (const char*[]){ TERMINAL, "-e", "sudo", "nmtui", NULL } } },
 	{ MODKEY,			XK_w,			spawn,		{.v = (const char*[]){ BROWSER, NULL } } },
 	{ MODKEY,			XK_i,			spawn,		{.v = (const char*[]){ "dmenu_run", NULL } } },
-	{ MODKEYC,			XK_i,			spawn,		{.v = (const char*[]){ "dmenuunicode", NULL } } },
-	{ MODKEYC,			XK_p,			spawn,		{.v = (const char*[]){ "passmenu", NULL } } },
+	{ MODKEYS,			XK_i,			spawn,		{.v = (const char*[]){ "dmenuunicode", NULL } } },
+//	{ MODKEYC,			XK_p,			spawn,		{.v = (const char*[]){ "passmenu", NULL } } },
 // ncmpcpp_music
 //	{ MODKEY,			XK_p,			spawn,		{.v = (const char*[]){ "mpc", "toggle", NULL } } },
 //	{ MODKEY,			XK_bracketleft,		spawn,		{.v = (const char*[]){ "mpc", "seek", "-10", NULL } } },
@@ -232,10 +232,10 @@ static Key keys[] = {
 // newsboat_rss
 //	{ MODKEYS,			XK_n,			spawn,		SHCMD(TERMINAL " -e newsboat ; pkill -RTMIN+6 dwmblocks") },
 // maim_record
-	{ 0,				XK_Print,		spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
-	{ ShiftMask,			XK_Print,		spawn,		{.v = (const char*[]){ "maimpick", NULL } } },
+//	{ 0,				XK_Print,		spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
+	{ 0,				XK_Print,		spawn,		{.v = (const char*[]){ "maimpick", NULL } } },
 	{ MODKEY,			XK_Print,		spawn,		{.v = (const char*[]){ "dmenurecord", NULL } } },
-	{ MODKEYS,			XK_Print,		spawn,		{.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
+//	{ MODKEYS,			XK_Print,		spawn,		{.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
 	{ MODKEY,			XK_Delete,		spawn,		{.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
 	{ MODKEY,			XK_Scroll_Lock,		spawn,		SHCMD("killall screenkey || screenkey &") },
 // unknown
