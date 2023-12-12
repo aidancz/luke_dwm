@@ -215,7 +215,7 @@ TAGKEYS(XK_9,      8)
 /* { MODKEY,  XK_e,                     spawn,         {.v = (const char*[]){ "emacsclient", "-c", "-a", "", NULL } } }, */
 /* https://github.com/daviwil/emacs-from-scratch/blob/master/show-notes/Emacs-Tips-08.org#opening-files-from-the-command-line */
 { MODKEY,     XK_e,                     spawn,         {.v = (const char*[]){ "emacsclient", "-c", NULL } } },
-{ MODKEYC,    XK_e,                     spawn,         {.v = (const char*[]){ "emacs", NULL } } },
+{ MODKEYS,    XK_e,                     spawn,         {.v = (const char*[]){ "emacs", NULL } } },
 
 /* browser */
 { MODKEY,     XK_w,                     spawn,         {.v = (const char*[]){ BROWSER, NULL } } },
