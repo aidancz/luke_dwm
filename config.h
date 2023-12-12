@@ -44,6 +44,10 @@ static Sp scratchpads[] = {
 {"spcalc",      spcmd2},
 };
 
+/* swallow emacs */
+static const char emacsclient[] = "emacsclient";
+static const char emacsname[] = "GNU Emacs";
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
