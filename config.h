@@ -207,15 +207,17 @@ TAGKEYS(XK_9,      8)
 /* { MODKEY,  XK_c,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } }, */
 /* { MODKEY,  XK_m,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } }, */
 /* { MODKEY,  XK_n,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "nvim", "-c", "VimwikiIndex", NULL } } }, */
-/* { MODKEY,  XK_i,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } }, */
+{ MODKEY,     XK_i,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } },
 /* { MODKEY,  XK_r,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } }, */
 /* { MODKEYC, XK_n,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "sudo", "nmtui", NULL } } }, */
 
 /* emacs */
 /* { MODKEY,  XK_e,                     spawn,         {.v = (const char*[]){ "emacsclient", "-c", "-a", "", NULL } } }, */
 /* https://github.com/daviwil/emacs-from-scratch/blob/master/show-notes/Emacs-Tips-08.org#opening-files-from-the-command-line */
-{ MODKEY,     XK_e,                     spawn,         {.v = (const char*[]){ "emacsclient", "-c", NULL } } },
-{ MODKEYS,    XK_e,                     spawn,         {.v = (const char*[]){ "emacs", NULL } } },
+{ MODKEY,     XK_e,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "emacsclient", "-nw", NULL } } },
+{ MODKEYS,    XK_e,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "emacs", "-nw", NULL } } },
+{ MODKEYC,    XK_e,                     spawn,         {.v = (const char*[]){ "emacsclient", "-c", NULL } } },
+{ MODKEYA,    XK_e,                     spawn,         {.v = (const char*[]){ "emacs", NULL } } },
 
 /* browser */
 { MODKEY,     XK_w,                     spawn,         {.v = (const char*[]){ BROWSER, NULL } } },
@@ -252,10 +254,10 @@ TAGKEYS(XK_9,      8)
 /* maim_record */
 /* { 0,       XK_Print,                 spawn,         SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") }, */
 { 0,          XK_Print,                 spawn,         {.v = (const char*[]){ "maimpick", NULL } } },
-{ MODKEY,     XK_Print,                 spawn,         {.v = (const char*[]){ "dmenurecord", NULL } } },
+{ MODKEY,     XK_c,                     spawn,         {.v = (const char*[]){ "dmenurecord", NULL } } },
 /* { MODKEYS, XK_Print,                 spawn,         {.v = (const char*[]){ "dmenurecord", "kill", NULL } } }, */
-{ MODKEY,     XK_Delete,                spawn,         {.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
-{ MODKEY,     XK_Scroll_Lock,           spawn,         SHCMD("killall screenkey || screenkey &") },
+{ MODKEY,     XK_v,                     spawn,         {.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
+{ MODKEY,     XK_z,                     spawn,         SHCMD("killall screenkey || screenkey &") },
 
 /* unknown */
 /* { MODKEY,  XK_minus,                 spawn,         SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") }, */
