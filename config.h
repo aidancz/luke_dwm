@@ -96,8 +96,8 @@ static const Layout layouts[] = {
 { MODKEYC,                      KEY,            tag,            {.ui = 1 << TAG} }, \
 { MODKEYS,                      KEY,            toggletag,      {.ui = 1 << TAG} },
 #define STACKKEYS(MOD,ACTION) \
-{ MOD,  XK_n,   ACTION##stack,  {.i = INC(+1) } }, \
-{ MOD,  XK_p,   ACTION##stack,  {.i = INC(-1) } }, \
+{ MOD,  XK_f,   ACTION##stack,  {.i = INC(+1) } }, \
+{ MOD,  XK_b,   ACTION##stack,  {.i = INC(-1) } }, \
 { MOD,  XK_a,   ACTION##stack,  {.i = 0 } }, \
 /* { MOD, XK_grave, ACTION##stack, {.i = PREVSEL } }, \ */
 /* { MOD, XK_a,     ACTION##stack, {.i = 1 } }, \ */
@@ -166,23 +166,23 @@ TAGKEYS(XK_9,      8)
 
 { MODKEY,  XK_0, view,      {.ui = ~0 } },
 { MODKEYC, XK_0, tag,       {.ui = ~0 } },
-{ MODKEY,  XK_h, shiftview, { .i = -1 } },
-{ MODKEYC, XK_h, shifttag,  { .i = -1 } },
-{ MODKEY,  XK_l, shiftview, { .i = 1 } },
-{ MODKEYC, XK_l, shifttag,  { .i = 1 } },
+{ MODKEY,  XK_p, shiftview, { .i = -1 } },
+{ MODKEYC, XK_p, shifttag,  { .i = -1 } },
+{ MODKEY,  XK_n, shiftview, { .i = 1 } },
+{ MODKEYC, XK_n, shifttag,  { .i = 1 } },
 { MODKEY,  XK_o, view,      {0} }, // view previous tag
 
-{ MODKEY,  XK_f,            setlayout,       {.v = &layouts[0]} }, // tile
-{ MODKEYC, XK_f,            setlayout,       {.v = &layouts[1]} }, // tile_master on top
+{ MODKEY,  XK_d,            setlayout,       {.v = &layouts[0]} }, // tile
+{ MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[1]} }, // tile_master on top
 { MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[2]} }, // fibonacci
 { MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[3]} }, // dwindle
-{ MODKEY,  XK_d,            setlayout,       {.v = &layouts[4]} }, // monocle_master on left
+{ MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[4]} }, // monocle_master on left
 { MODKEYC, XK_d,            setlayout,       {.v = &layouts[5]} }, // monocle
 { MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[6]} }, // centermaster
-{ MODKEYC, XK_VoidSymbol,   setlayout,       {.v = &layouts[7]} }, // centermaster_master float
+{ MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[7]} }, // centermaster_master float
 { MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[8]} }, // float (aka normie)
-{ MODKEY,  XK_equal,        incnmaster,      {.i = +1 } },
 { MODKEY,  XK_minus,        incnmaster,      {.i = -1 } },
+{ MODKEY,  XK_equal,        incnmaster,      {.i = +1 } },
 { MODKEY,  XK_bracketleft,  setmfact,        {.f = -0.05} },
 { MODKEY,  XK_bracketright, setmfact,        {.f = +0.05} },
 { MODKEY,  XK_VoidSymbol,   togglebar,       {0} },
@@ -223,6 +223,13 @@ TAGKEYS(XK_9,      8)
 /* browser */
 { MODKEY,     XK_w,                     spawn,         {.v = (const char*[]){ BROWSER, NULL } } },
 
+/* quick switch */
+{ MODKEY,     XK_j,                     spawn,         SHCMD("wmctrl -xa st") },
+{ MODKEY,     XK_k,                     spawn,         SHCMD("wmctrl -xa emacs") },
+{ MODKEY,     XK_l,                     spawn,         SHCMD("wmctrl -xa chrome") },
+
+
+
 /* dmenu */
 { MODKEY,     XK_semicolon,             spawn,         {.v = (const char*[]){ "dmenu_run", NULL } } },
 { MODKEYC,    XK_semicolon,             spawn,         {.v = (const char*[]){ "dmenuunicode", NULL } } },
@@ -255,9 +262,8 @@ TAGKEYS(XK_9,      8)
 /* maim_record */
 /* { 0,       XK_Print,                 spawn,         SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") }, */
 { 0,          XK_Print,                 spawn,         {.v = (const char*[]){ "maimpick", NULL } } },
-{ MODKEY,     XK_c,                     spawn,         {.v = (const char*[]){ "dmenurecord", NULL } } },
-/* { MODKEYS, XK_Print,                 spawn,         {.v = (const char*[]){ "dmenurecord", "kill", NULL } } }, */
-{ MODKEY,     XK_v,                     spawn,         {.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
+{ MODKEY,     XK_x,                     spawn,         {.v = (const char*[]){ "dmenurecord", NULL } } },
+{ MODKEY,     XK_c,                     spawn,         {.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
 { MODKEY,     XK_z,                     spawn,         SHCMD("killall screenkey || screenkey &") },
 
 /* unknown */
