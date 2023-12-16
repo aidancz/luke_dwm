@@ -201,6 +201,7 @@ TAGKEYS(XK_9,      8)
 
 
 /* terminal */
+{ MODKEY,     XK_Return,                spawn,         {.v = termcmd } },
 { MODKEY,     XK_space,                 spawn,         {.v = termcmd } },
 { MODKEY,     XK_period,                togglescratch, {.ui = 0} },
 { MODKEY,     XK_comma,                 togglescratch, {.ui = 1} },
