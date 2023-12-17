@@ -96,8 +96,8 @@ static const Layout layouts[] = {
 { MODKEYC,                      KEY,            tag,            {.ui = 1 << TAG} }, \
 { MODKEYS,                      KEY,            toggletag,      {.ui = 1 << TAG} },
 #define STACKKEYS(MOD,ACTION) \
-{ MOD,  XK_f,   ACTION##stack,  {.i = INC(+1) } }, \
-{ MOD,  XK_b,   ACTION##stack,  {.i = INC(-1) } }, \
+{ MOD,  XK_n,   ACTION##stack,  {.i = INC(+1) } }, \
+{ MOD,  XK_p,   ACTION##stack,  {.i = INC(-1) } }, \
 { MOD,  XK_a,   ACTION##stack,  {.i = 0 } }, \
 /* { MOD, XK_grave, ACTION##stack, {.i = PREVSEL } }, \ */
 /* { MOD, XK_a,     ACTION##stack, {.i = 1 } }, \ */
@@ -142,6 +142,10 @@ ResourcePref resources[] = {
 #include "shiftview.c"
 
 static Key keys[] = {
+/* available keys: */
+/* rtsgb */
+/* yuh/ */
+/* f13 */
 
 /* modifier, key,  function, argument */
 { MODKEYC,   XK_q, spawn,    {.v = (const char*[]){ "sysact", NULL } } },
@@ -166,18 +170,18 @@ TAGKEYS(XK_9,      8)
 
 { MODKEY,  XK_0, view,      {.ui = ~0 } },
 { MODKEYC, XK_0, tag,       {.ui = ~0 } },
-{ MODKEY,  XK_p, shiftview, { .i = -1 } },
-{ MODKEYC, XK_p, shifttag,  { .i = -1 } },
-{ MODKEY,  XK_n, shiftview, { .i = 1 } },
-{ MODKEYC, XK_n, shifttag,  { .i = 1 } },
+{ MODKEY,  XK_d, shiftview, { .i = -1 } },
+{ MODKEYC, XK_d, shifttag,  { .i = -1 } },
+{ MODKEY,  XK_f, shiftview, { .i = 1 } },
+{ MODKEYC, XK_f, shifttag,  { .i = 1 } },
 { MODKEY,  XK_o, view,      {0} }, // view previous tag
 
-{ MODKEY,  XK_d,            setlayout,       {.v = &layouts[0]} }, // tile
+{ MODKEY,  XK_v,            setlayout,       {.v = &layouts[0]} }, // tile
 { MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[1]} }, // tile_master on top
 { MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[2]} }, // fibonacci
 { MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[3]} }, // dwindle
 { MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[4]} }, // monocle_master on left
-{ MODKEYC, XK_d,            setlayout,       {.v = &layouts[5]} }, // monocle
+{ MODKEYC, XK_v,            setlayout,       {.v = &layouts[5]} }, // monocle
 { MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[6]} }, // centermaster
 { MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[7]} }, // centermaster_master float
 { MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[8]} }, // float (aka normie)
