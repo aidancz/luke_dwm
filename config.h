@@ -142,18 +142,13 @@ ResourcePref resources[] = {
 #include "shiftview.c"
 
 static Key keys[] = {
-/* available keys: */
-/* rtsgb */
-/* yuh/ */
-/* f13 */
-
 /* modifier, key,  function, argument */
 { MODKEYC,   XK_q, spawn,    {.v = (const char*[]){ "sysact", NULL } } },
 
-{ MODKEY,  XK_Left,  focusmon, {.i = -1 } },
-{ MODKEYC, XK_Left,  tagmon,   {.i = -1 } },
-{ MODKEY,  XK_Right, focusmon, {.i = +1 } },
-{ MODKEYC, XK_Right, tagmon,   {.i = +1 } },
+{ MODKEY,  XK_comma,  focusmon, {.i = -1 } },
+{ MODKEYC, XK_comma,  tagmon,   {.i = -1 } },
+{ MODKEY,  XK_period, focusmon, {.i = +1 } },
+{ MODKEYC, XK_period, tagmon,   {.i = +1 } },
 
 STACKKEYS(MODKEY,  focus)
 STACKKEYS(MODKEYC, push)
@@ -168,33 +163,33 @@ TAGKEYS(XK_7,      6)
 TAGKEYS(XK_8,      7)
 TAGKEYS(XK_9,      8)
 
-{ MODKEY,  XK_0, view,      {.ui = ~0 } },
-{ MODKEYC, XK_0, tag,       {.ui = ~0 } },
-{ MODKEY,  XK_d, shiftview, { .i = -1 } },
-{ MODKEYC, XK_d, shifttag,  { .i = -1 } },
-{ MODKEY,  XK_f, shiftview, { .i = 1 } },
-{ MODKEYC, XK_f, shifttag,  { .i = 1 } },
-{ MODKEY,  XK_o, view,      {0} }, // view previous tag
+{ MODKEY,  XK_0,   view,      {.ui = ~0 } },
+{ MODKEYC, XK_0,   tag,       {.ui = ~0 } },
+{ MODKEY,  XK_o,   shiftview, { .i = -1 } },
+{ MODKEYC, XK_o,   shifttag,  { .i = -1 } },
+{ MODKEY,  XK_i,   shiftview, { .i = 1 } },
+{ MODKEYC, XK_i,   shifttag,  { .i = 1 } },
+{ MODKEY,  XK_Tab, view,      {0} },         // view previous tag
 
 { MODKEY,  XK_v,            setlayout,       {.v = &layouts[0]} }, // tile
-{ MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[1]} }, // tile_master on top
-{ MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[2]} }, // fibonacci
-{ MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[3]} }, // dwindle
-{ MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[4]} }, // monocle_master on left
+/* { MODKEY,  XK_,             setlayout,       {.v = &layouts[1]} }, // tile_master on top */
+/* { MODKEY,  XK_,             setlayout,       {.v = &layouts[2]} }, // fibonacci */
+/* { MODKEY,  XK_,             setlayout,       {.v = &layouts[3]} }, // dwindle */
+/* { MODKEY,  XK_,             setlayout,       {.v = &layouts[4]} }, // monocle_master on left */
 { MODKEYC, XK_v,            setlayout,       {.v = &layouts[5]} }, // monocle
-{ MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[6]} }, // centermaster
-{ MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[7]} }, // centermaster_master float
-{ MODKEY,  XK_VoidSymbol,   setlayout,       {.v = &layouts[8]} }, // float (aka normie)
+/* { MODKEY,  XK_,             setlayout,       {.v = &layouts[6]} }, // centermaster */
+/* { MODKEY,  XK_,             setlayout,       {.v = &layouts[7]} }, // centermaster_master float */
+/* { MODKEY,  XK_,             setlayout,       {.v = &layouts[8]} }, // float (aka normie) */
 { MODKEY,  XK_minus,        incnmaster,      {.i = -1 } },
 { MODKEY,  XK_equal,        incnmaster,      {.i = +1 } },
 { MODKEY,  XK_bracketleft,  setmfact,        {.f = -0.05} },
 { MODKEY,  XK_bracketright, setmfact,        {.f = +0.05} },
-{ MODKEY,  XK_VoidSymbol,   togglebar,       {0} },
-{ MODKEY,  XK_VoidSymbol,   togglegaps,      {0} },
-{ MODKEY,  XK_VoidSymbol,   togglesmartgaps,{0} },
-{ MODKEY,  XK_VoidSymbol,   incrgaps,        {.i = +3 } },
-{ MODKEY,  XK_VoidSymbol,   incrgaps,        {.i = -3 } },
-{ MODKEY,  XK_VoidSymbol,   defaultgaps,     {0} },
+/* { MODKEY,  XK_,             togglebar,       {0} }, */
+/* { MODKEY,  XK_,             togglegaps,      {0} }, */
+/* { MODKEY,  XK_,             togglesmartgaps, {0} }, */
+/* { MODKEY,  XK_,             incrgaps,        {.i = +3 } }, */
+/* { MODKEY,  XK_,             incrgaps,        {.i = -3 } }, */
+/* { MODKEY,  XK_,             defaultgaps,     {0} }, */
 
 { MODKEY, XK_q,          killclient,     {0} }, // window close
 { MODKEY, XK_m,          zoom,           {0} }, // window first (if already first, move second window to first)
@@ -207,12 +202,12 @@ TAGKEYS(XK_9,      8)
 /* terminal */
 { MODKEY,     XK_Return,                spawn,         {.v = termcmd } },
 { MODKEY,     XK_space,                 spawn,         {.v = termcmd } },
-{ MODKEY,     XK_period,                togglescratch, {.ui = 0} },
-{ MODKEY,     XK_comma,                 togglescratch, {.ui = 1} },
+/* { MODKEY,  XK_period,                togglescratch, {.ui = 0} }, */
+/* { MODKEY,  XK_comma,                 togglescratch, {.ui = 1} }, */
 /* { MODKEY,  XK_c,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } }, */
 /* { MODKEY,  XK_m,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } }, */
 /* { MODKEY,  XK_n,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "nvim", "-c", "VimwikiIndex", NULL } } }, */
-{ MODKEY,     XK_i,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } },
+/* { MODKEY,  XK_i,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } }, */
 /* { MODKEY,  XK_r,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } }, */
 /* { MODKEYC, XK_n,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "sudo", "nmtui", NULL } } }, */
 
