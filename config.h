@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMINAL "st"
 #define TERMCLASS "St"
-#define BROWSER "google-chrome-stable"
+#define BROWSER "firefox"
 
 /* appearance */
 static unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -65,23 +65,23 @@ static const Rule rules[] = {
 static float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
 static int nmaster     = 1;    /* number of clients in master area */
 static int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static const int attachdirection = 4;    /* 0 default, 1 above, 2 aside, 3 below, 4 bottom, 5 top */
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
+
+
+
 static const Layout layouts[] = {
 /* symbol     arrange function */
-{ "[]=",        tile },                 /* Default: Master on left, slaves on right */
-{ "TTT",        bstack },               /* Master on top, slaves on bottom */
-
-{ "[@]",        spiral },               /* Fibonacci spiral */
-{ "[\\]",       dwindle },              /* Decreasing in size right and leftward */
-
-{ "[D]",        deck },                 /* Master on left, slaves in monocle-like mode on right */
-{ "[M]",        monocle },              /* All windows on top of eachother */
-
-{ "|M|",        centeredmaster },               /* Master in middle, slaves on sides */
+{ "TTT",        bstack },                       /* Master on top,           slaves on bottom */
+{ "[]=",        tile },                         /* Default: Master on left, slaves on right */
+{ "[M]",        monocle },                      /* All windows on top of eachother */
+{ "[@]",        spiral },                       /* Fibonacci spiral */
+{ "[\\]",       dwindle },                      /* Decreasing in size right and leftward */
+{ "[D]",        deck },                         /* Master on left,          slaves in monocle-like mode on right */
+{ "|M|",        centeredmaster },               /* Master in middle,        slaves on sides */
 { ">M>",        centeredfloatingmaster },       /* Same but master floats */
-
-{ "><>",        NULL },                 /* no layout function means floating behavior */
+{ "><>",        NULL },                         /* no layout function means floating behavior */
 { NULL,         NULL },
 };
 
@@ -98,7 +98,7 @@ static const Layout layouts[] = {
 #define STACKKEYS(MOD,ACTION) \
 { MOD,  XK_n,   ACTION##stack,  {.i = INC(+1) } }, \
 { MOD,  XK_p,   ACTION##stack,  {.i = INC(-1) } }, \
-{ MOD,  XK_a,   ACTION##stack,  {.i = 0 } }, \
+/* { MOD,  XK_a,   ACTION##stack,  {.i = 0 } }, \ */
 /* { MOD, XK_grave, ACTION##stack, {.i = PREVSEL } }, \ */
 /* { MOD, XK_a,     ACTION##stack, {.i = 1 } }, \ */
 /* { MOD, XK_z,     ACTION##stack, {.i = 2 } }, \ */
@@ -145,10 +145,10 @@ static Key keys[] = {
 /* modifier, key,  function, argument */
 { MODKEYC,   XK_q, spawn,    {.v = (const char*[]){ "sysact", NULL } } },
 
-{ MODKEY,  XK_comma,  focusmon, {.i = -1 } },
-{ MODKEYC, XK_comma,  tagmon,   {.i = -1 } },
-{ MODKEY,  XK_period, focusmon, {.i = +1 } },
-{ MODKEYC, XK_period, tagmon,   {.i = +1 } },
+/* { MODKEY,  XK_comma,  focusmon, {.i = -1 } }, */
+/* { MODKEYC, XK_comma,  tagmon,   {.i = -1 } }, */
+/* { MODKEY,  XK_period, focusmon, {.i = +1 } }, */
+/* { MODKEYC, XK_period, tagmon,   {.i = +1 } }, */
 
 STACKKEYS(MODKEY,  focus)
 STACKKEYS(MODKEYC, push)
@@ -169,19 +169,14 @@ TAGKEYS(XK_9,      8)
 { MODKEYC, XK_o,   shifttag,  { .i = -1 } },
 { MODKEY,  XK_i,   shiftview, { .i = 1 } },
 { MODKEYC, XK_i,   shifttag,  { .i = 1 } },
-{ MODKEY,  XK_Tab, view,      {0} },         // view previous tag
+/* { MODKEY,  XK_Tab, view,      {0} },         // view previous tag */
 
-{ MODKEY,  XK_v,            setlayout,       {.v = &layouts[0]} }, // tile
-/* { MODKEY,  XK_,             setlayout,       {.v = &layouts[1]} }, // tile_master on top */
-/* { MODKEY,  XK_,             setlayout,       {.v = &layouts[2]} }, // fibonacci */
-/* { MODKEY,  XK_,             setlayout,       {.v = &layouts[3]} }, // dwindle */
-/* { MODKEY,  XK_,             setlayout,       {.v = &layouts[4]} }, // monocle_master on left */
-{ MODKEYC, XK_v,            setlayout,       {.v = &layouts[5]} }, // monocle
-/* { MODKEY,  XK_,             setlayout,       {.v = &layouts[6]} }, // centermaster */
-/* { MODKEY,  XK_,             setlayout,       {.v = &layouts[7]} }, // centermaster_master float */
-/* { MODKEY,  XK_,             setlayout,       {.v = &layouts[8]} }, // float (aka normie) */
-{ MODKEY,  XK_minus,        incnmaster,      {.i = -1 } },
-{ MODKEY,  XK_equal,        incnmaster,      {.i = +1 } },
+{ MODKEY,  XK_comma,        setlayout,       {.v = &layouts[0]} },
+{ MODKEY,  XK_period,       setlayout,       {.v = &layouts[1]} },
+{ MODKEY,  XK_slash,        setlayout,       {.v = &layouts[2]} },
+
+/* { MODKEY,  XK_minus,        incnmaster,      {.i = -1 } }, */
+/* { MODKEY,  XK_equal,        incnmaster,      {.i = +1 } }, */
 { MODKEY,  XK_bracketleft,  setmfact,        {.f = -0.05} },
 { MODKEY,  XK_bracketright, setmfact,        {.f = +0.05} },
 /* { MODKEY,  XK_,             togglebar,       {0} }, */
@@ -214,25 +209,26 @@ TAGKEYS(XK_9,      8)
 /* emacs */
 /* { MODKEY,  XK_e,                     spawn,         {.v = (const char*[]){ "emacsclient", "-c", "-a", "", NULL } } }, */
 /* https://github.com/daviwil/emacs-from-scratch/blob/master/show-notes/Emacs-Tips-08.org#opening-files-from-the-command-line */
-{ MODKEY,     XK_e,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "emacsclient", "-nw", NULL } } },
-{ MODKEYS,    XK_e,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "emacs", "-nw", NULL } } },
-{ MODKEYC,    XK_e,                     spawn,         {.v = (const char*[]){ "emacsclient", "-c", NULL } } },
-{ MODKEYA,    XK_e,                     spawn,         {.v = (const char*[]){ "emacs", NULL } } },
+/* { MODKEY,     XK_e,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "emacsclient", "-nw", NULL } } }, */
+/* { MODKEYS,    XK_e,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "emacs", "-nw", NULL } } }, */
+/* { MODKEYC,    XK_e,                     spawn,         {.v = (const char*[]){ "emacsclient", "-c", NULL } } }, */
+{ MODKEY,     XK_e,                     spawn,         {.v = (const char*[]){ "emacs", NULL } } },
 
 /* browser */
 { MODKEY,     XK_w,                     spawn,         {.v = (const char*[]){ BROWSER, NULL } } },
 
 /* quick switch */
-{ MODKEY,     XK_j,                     spawn,         SHCMD("wmctrl -xa st") },
-{ MODKEY,     XK_k,                     spawn,         SHCMD("wmctrl -xa emacs") },
-{ MODKEY,     XK_l,                     spawn,         SHCMD("wmctrl -xa chrome") },
+/* { MODKEY,     XK_j,                     spawn,         SHCMD("wmctrl -ia $(wmctrl -xpl | grep "st\.St" | sort -k3)") }, */
+/* { MODKEY,     XK_j,                     spawn,         SHCMD("wmctrl -ia $(wmctrl -xpl | grep 'st\.St' | sort -k3n)") }, */
+/* { MODKEY,     XK_k,                     spawn,         SHCMD("wmctrl -xa emacs") }, */
+/* { MODKEY,     XK_l,                     spawn,         SHCMD("wmctrl -xa firefox") }, */
 
 
 
 /* dmenu */
-{ MODKEY,     XK_semicolon,             spawn,         {.v = (const char*[]){ "dmenu_run", NULL } } },
-{ MODKEYC,    XK_semicolon,             spawn,         {.v = (const char*[]){ "dmenuunicode", NULL } } },
-/* { MODKEYC, XK_p,                     spawn,         {.v = (const char*[]){ "passmenu", NULL } } }, */
+{ MODKEYS, XK_semicolon, spawn, {.v = (const char*[]){ "dmenu_run",    NULL } } },
+/* { MODKEYC, XK_semicolon, spawn, {.v = (const char*[]){ "dmenuunicode", NULL } } }, */
+/* { MODKEYC, XK_p,         spawn, {.v = (const char*[]){ "passmenu",     NULL } } }, */
 
 /* gui app */
 /* { MODKEYC, XK_c,                     spawn,         {.v = (const char*[]){ "nutstore", NULL } } }, */
@@ -261,9 +257,9 @@ TAGKEYS(XK_9,      8)
 /* maim_record */
 /* { 0,       XK_Print,                 spawn,         SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") }, */
 { 0,          XK_Print,                 spawn,         {.v = (const char*[]){ "maimpick", NULL } } },
-{ MODKEY,     XK_x,                     spawn,         {.v = (const char*[]){ "dmenurecord", NULL } } },
-{ MODKEY,     XK_c,                     spawn,         {.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
-{ MODKEY,     XK_z,                     spawn,         SHCMD("killall screenkey || screenkey &") },
+{ MODKEYC,    XK_i,                     spawn,         {.v = (const char*[]){ "dmenurecord", NULL } } },
+{ MODKEYC,    XK_o,                     spawn,         {.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
+{ MODKEYC,    XK_s,                     spawn,         SHCMD("killall screenkey || screenkey &") },
 
 /* unknown */
 /* { MODKEY,  XK_minus,                 spawn,         SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") }, */
