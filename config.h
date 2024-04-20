@@ -152,7 +152,6 @@ static Key keys[] = {
 
 STACKKEYS(MODKEY,  focus)
 STACKKEYS(MODKEYC, push)
-/* <c-jkm> are automatically bound above in STACKKEYS */
 TAGKEYS(XK_1,      0)
 TAGKEYS(XK_2,      1)
 TAGKEYS(XK_3,      2)
@@ -197,14 +196,14 @@ TAGKEYS(XK_9,      8)
 /* terminal */
 { MODKEY,     XK_Return,                spawn,         {.v = termcmd } },
 { MODKEY,     XK_space,                 spawn,         {.v = termcmd } },
-/* { MODKEY,  XK_period,                togglescratch, {.ui = 0} }, */
-/* { MODKEY,  XK_comma,                 togglescratch, {.ui = 1} }, */
-/* { MODKEY,  XK_c,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } }, */
-/* { MODKEY,  XK_m,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } }, */
-/* { MODKEY,  XK_n,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "nvim", "-c", "VimwikiIndex", NULL } } }, */
-/* { MODKEY,  XK_i,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } }, */
-/* { MODKEY,  XK_r,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } }, */
-/* { MODKEYC, XK_n,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "sudo", "nmtui", NULL } } }, */
+/* { MODKEY,     XK_period,                togglescratch, {.ui = 0} }, */
+/* { MODKEY,     XK_comma,                 togglescratch, {.ui = 1} }, */
+/* { MODKEY,     XK_c,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } }, */
+/* { MODKEY,     XK_m,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp",   NULL } } }, */
+/* { MODKEY,     XK_n,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "nvim",      "-c",    "VimwikiIndex", NULL } } }, */
+/* { MODKEY,     XK_k,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "lfub",      NULL } } }, */
+/* { MODKEY,     XK_r,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "htop",      NULL } } }, */
+/* { MODKEYC,    XK_n,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "sudo",      "nmtui", NULL } } }, */
 
 /* emacs */
 /* { MODKEY,  XK_e,                     spawn,         {.v = (const char*[]){ "emacsclient", "-c", "-a", "", NULL } } }, */
@@ -212,7 +211,7 @@ TAGKEYS(XK_9,      8)
 /* { MODKEY,     XK_e,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "emacsclient", "-nw", NULL } } }, */
 /* { MODKEYS,    XK_e,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "emacs", "-nw", NULL } } }, */
 /* { MODKEYC,    XK_e,                     spawn,         {.v = (const char*[]){ "emacsclient", "-c", NULL } } }, */
-{ MODKEY,     XK_e,                     spawn,         {.v = (const char*[]){ "emacs", NULL } } },
+/* { MODKEY,     XK_e,                     spawn,         {.v = (const char*[]){ "emacs", NULL } } }, */
 
 /* browser */
 { MODKEY,     XK_w,                     spawn,         {.v = (const char*[]){ BROWSER, NULL } } },
@@ -256,10 +255,10 @@ TAGKEYS(XK_9,      8)
 
 /* maim_record */
 /* { 0,       XK_Print,                 spawn,         SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") }, */
-{ 0,          XK_Print,                 spawn,         {.v = (const char*[]){ "maimpick", NULL } } },
-{ MODKEYC,    XK_i,                     spawn,         {.v = (const char*[]){ "dmenurecord", NULL } } },
-{ MODKEYC,    XK_o,                     spawn,         {.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
-{ MODKEYC,    XK_s,                     spawn,         SHCMD("killall screenkey || screenkey &") },
+{ MODKEY,     XK_x,                     spawn,         {.v = (const char*[]){ "maimpick", NULL } } },
+{ MODKEY,     XK_z,                     spawn,         SHCMD("killall screenkey || screenkey &") },
+{ MODKEY,     XK_c,                     spawn,         {.v = (const char*[]){ "dmenurecord", NULL } } },
+{ MODKEY,     XK_v,                     spawn,         {.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
 
 /* unknown */
 /* { MODKEY,  XK_minus,                 spawn,         SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") }, */
