@@ -196,6 +196,7 @@ TAGKEYS(XK_9,      8)
 /* terminal */
 { MODKEY,     XK_Return,                spawn,         {.v = termcmd } },
 { MODKEY,     XK_space,                 spawn,         {.v = termcmd } },
+/* { MODKEY,     XK_k,                     spawn,         {.v = (const char*[]){ "sd", NULL } } }, */
 /* { MODKEY,     XK_period,                togglescratch, {.ui = 0} }, */
 /* { MODKEY,     XK_comma,                 togglescratch, {.ui = 1} }, */
 /* { MODKEY,     XK_c,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } }, */
