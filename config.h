@@ -170,9 +170,9 @@ TAGKEYS(XK_9,      8)
 { MODKEYC, XK_i,   shifttag,  { .i = 1 } },
 /* { MODKEY,  XK_Tab, view,      {0} },         // view previous tag */
 
-{ MODKEY,  XK_comma,        setlayout,       {.v = &layouts[0]} },
-{ MODKEY,  XK_period,       setlayout,       {.v = &layouts[1]} },
-{ MODKEY,  XK_slash,        setlayout,       {.v = &layouts[2]} },
+{ MODKEY,  XK_period,       setlayout,       {.v = &layouts[0]} },
+{ MODKEY,  XK_comma,        setlayout,       {.v = &layouts[1]} },
+{ MODKEY,  XK_semicolon,    setlayout,       {.v = &layouts[2]} },
 
 /* { MODKEY,  XK_minus,        incnmaster,      {.i = -1 } }, */
 /* { MODKEY,  XK_equal,        incnmaster,      {.i = +1 } }, */
