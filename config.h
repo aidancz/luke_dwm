@@ -188,7 +188,7 @@ TAGKEYS(XK_9,      8)
 { MODKEY, XK_q,          killclient,     {0} }, // window close
 { MODKEY, XK_m,          zoom,           {0} }, // window first (if already first, move second window to first)
 { MODKEY, XK_backslash,  togglefloating, {0} }, // window float
-{ MODKEY, XK_apostrophe, togglesticky,   {0} }, // window sticky
+/* { MODKEY, XK_apostrophe, togglesticky,   {0} }, // window sticky */
 { MODKEY, XK_grave,      togglefullscr,  {0} }, // window full screen
 
 
