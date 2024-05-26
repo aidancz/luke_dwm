@@ -164,11 +164,11 @@ TAGKEYS(XK_9,      8)
 
 { MODKEY,  XK_0,   view,      {.ui = ~0 } },
 { MODKEYC, XK_0,   tag,       {.ui = ~0 } },
-{ MODKEY,  XK_o,   shiftview, { .i = -1 } },
-{ MODKEYC, XK_o,   shifttag,  { .i = -1 } },
-{ MODKEY,  XK_i,   shiftview, { .i = 1 } },
-{ MODKEYC, XK_i,   shifttag,  { .i = 1 } },
-/* { MODKEY,  XK_Tab, view,      {0} },         // view previous tag */
+{ MODKEY,  XK_k,   shiftview, { .i = -1 } },
+{ MODKEYC, XK_k,   shifttag,  { .i = -1 } },
+{ MODKEY,  XK_j,   shiftview, { .i = 1 } },
+{ MODKEYC, XK_j,   shifttag,  { .i = 1 } },
+{ MODKEY,  XK_l,   view,      {0} },         // view previous tag
 
 { MODKEY,  XK_period,       setlayout,       {.v = &layouts[0]} },
 { MODKEY,  XK_comma,        setlayout,       {.v = &layouts[1]} },
