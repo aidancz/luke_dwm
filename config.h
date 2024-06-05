@@ -45,7 +45,7 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "6", "2", "0", "4", "8", "9", "5", "1", "3", "7" };
 
 static const Rule rules[] = {
 /* xprop(1):
@@ -152,23 +152,24 @@ static Key keys[] = {
 
 STACKKEYS(MODKEY,  focus)
 STACKKEYS(MODKEYC, push)
-TAGKEYS(XK_1,      0)
+TAGKEYS(XK_6,      0)
 TAGKEYS(XK_2,      1)
-TAGKEYS(XK_3,      2)
+TAGKEYS(XK_0,      2)
 TAGKEYS(XK_4,      3)
-TAGKEYS(XK_5,      4)
-TAGKEYS(XK_6,      5)
-TAGKEYS(XK_7,      6)
-TAGKEYS(XK_8,      7)
-TAGKEYS(XK_9,      8)
+TAGKEYS(XK_8,      4)
+TAGKEYS(XK_9,      5)
+TAGKEYS(XK_5,      6)
+TAGKEYS(XK_1,      7)
+TAGKEYS(XK_3,      8)
+TAGKEYS(XK_7,      9)
 
-{ MODKEY,  XK_0,   view,      {.ui = ~0 } },
-{ MODKEYC, XK_0,   tag,       {.ui = ~0 } },
+{ MODKEY,  XK_a,   view,      {.ui = ~0 } },
+{ MODKEYC, XK_a,   tag,       {.ui = ~0 } },
 /* { MODKEY,  XK_k,   shiftview, { .i = -1 } }, */
 /* { MODKEYC, XK_k,   shifttag,  { .i = -1 } }, */
 /* { MODKEY,  XK_j,   shiftview, { .i = 1 } }, */
 /* { MODKEYC, XK_j,   shifttag,  { .i = 1 } }, */
-{ MODKEY,  XK_l,   view,      {0} },         // view previous tag
+{ MODKEY,  XK_u,   view,      {0} },         // view previous tag
 
 { MODKEY,  XK_period,       setlayout,       {.v = &layouts[0]} },
 { MODKEY,  XK_comma,        setlayout,       {.v = &layouts[1]} },
