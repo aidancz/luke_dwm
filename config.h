@@ -161,8 +161,8 @@ TAGKEYS(XK_j,      5)
 TAGKEYS(XK_k,      6)
 TAGKEYS(XK_l,      7)
 
-/* { MODKEY,  XK_t,   view,      {.ui = ~0 } }, */
-/* { MODKEYC, XK_t,   tag,       {.ui = ~0 } }, */
+{ MODKEY,  XK_a,   view,      {.ui = ~0 } },
+{ MODKEYC, XK_a,   tag,       {.ui = ~0 } },
 /* { MODKEY,  XK_k,   shiftview, { .i = -1 } }, */
 /* { MODKEYC, XK_k,   shifttag,  { .i = -1 } }, */
 /* { MODKEY,  XK_j,   shiftview, { .i = 1 } }, */
