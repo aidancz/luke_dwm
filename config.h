@@ -45,7 +45,7 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "6", "2", "0", "4", "8", "9", "5", "1", "3", "7" };
+static const char *tags[] = { "a", "s", "d", "f", "g", "h", "j", "k", "l" };
 
 static const Rule rules[] = {
 /* xprop(1):
@@ -143,7 +143,7 @@ ResourcePref resources[] = {
 
 static Key keys[] = {
 /* modifier, key,  function, argument */
-{ MODKEYC,   XK_q, spawn,    {.v = (const char*[]){ "sysact", NULL } } },
+{ MODKEY, XK_q, spawn, {.v = (const char*[]){ "sysact", NULL } } },
 
 /* { MODKEY,  XK_comma,  focusmon, {.i = -1 } }, */
 /* { MODKEYC, XK_comma,  tagmon,   {.i = -1 } }, */
@@ -152,19 +152,18 @@ static Key keys[] = {
 
 STACKKEYS(MODKEY,  focus)
 STACKKEYS(MODKEYC, push)
-TAGKEYS(XK_6,      0)
-TAGKEYS(XK_2,      1)
-TAGKEYS(XK_0,      2)
-TAGKEYS(XK_4,      3)
-TAGKEYS(XK_8,      4)
-TAGKEYS(XK_9,      5)
-TAGKEYS(XK_5,      6)
-TAGKEYS(XK_1,      7)
-TAGKEYS(XK_3,      8)
-TAGKEYS(XK_7,      9)
+TAGKEYS(XK_a,      0)
+TAGKEYS(XK_s,      1)
+TAGKEYS(XK_d,      2)
+TAGKEYS(XK_f,      3)
+TAGKEYS(XK_g,      4)
+TAGKEYS(XK_h,      5)
+TAGKEYS(XK_j,      6)
+TAGKEYS(XK_k,      7)
+TAGKEYS(XK_l,      8)
 
-{ MODKEY,  XK_a,   view,      {.ui = ~0 } },
-{ MODKEYC, XK_a,   tag,       {.ui = ~0 } },
+/* { MODKEY,  XK_t,   view,      {.ui = ~0 } }, */
+/* { MODKEYC, XK_t,   tag,       {.ui = ~0 } }, */
 /* { MODKEY,  XK_k,   shiftview, { .i = -1 } }, */
 /* { MODKEYC, XK_k,   shifttag,  { .i = -1 } }, */
 /* { MODKEY,  XK_j,   shiftview, { .i = 1 } }, */
@@ -177,8 +176,8 @@ TAGKEYS(XK_7,      9)
 
 /* { MODKEY,  XK_minus,        incnmaster,      {.i = -1 } }, */
 /* { MODKEY,  XK_equal,        incnmaster,      {.i = +1 } }, */
-{ MODKEY,  XK_bracketleft,  setmfact,        {.f = -0.05} },
-{ MODKEY,  XK_bracketright, setmfact,        {.f = +0.05} },
+{ MODKEY, XK_minus, setmfact, {.f = -0.05} },
+{ MODKEY, XK_equal, setmfact, {.f = +0.05} },
 /* { MODKEY,  XK_,             togglebar,       {0} }, */
 /* { MODKEY,  XK_,             togglegaps,      {0} }, */
 /* { MODKEY,  XK_,             togglesmartgaps, {0} }, */
@@ -186,15 +185,16 @@ TAGKEYS(XK_7,      9)
 /* { MODKEY,  XK_,             incrgaps,        {.i = -3 } }, */
 /* { MODKEY,  XK_,             defaultgaps,     {0} }, */
 
-{ MODKEY, XK_q,          killclient,     {0} }, // window close
+{ MODKEY, XK_w,          killclient,     {0} }, // window close
 { MODKEY, XK_m,          zoom,           {0} }, // window first (if already first, move second window to first)
-{ MODKEY, XK_backslash,  togglefloating, {0} }, // window float
+{ MODKEY, XK_o,          togglefloating, {0} }, // window float
 /* { MODKEY, XK_apostrophe, togglesticky,   {0} }, // window sticky */
-{ MODKEY, XK_grave,      togglefullscr,  {0} }, // window full screen
+{ MODKEY, XK_i,          togglefullscr,  {0} }, // window full screen
 
 
 
 /* terminal */
+{ MODKEY,     XK_1,                     spawn,         {.v = termcmd } },
 { MODKEY,     XK_Return,                spawn,         {.v = termcmd } },
 { MODKEY,     XK_space,                 spawn,         {.v = termcmd } },
 /* { MODKEY,     XK_k,                     spawn,         {.v = (const char*[]){ "sd", NULL } } }, */
@@ -214,9 +214,10 @@ TAGKEYS(XK_7,      9)
 /* { MODKEYS,    XK_e,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "emacs", "-nw", NULL } } }, */
 /* { MODKEYC,    XK_e,                     spawn,         {.v = (const char*[]){ "emacsclient", "-c", NULL } } }, */
 /* { MODKEY,     XK_e,                     spawn,         {.v = (const char*[]){ "emacs", NULL } } }, */
+{ MODKEY,     XK_2,                     spawn,         {.v = (const char*[]){ "emacs", NULL } } },
 
 /* browser */
-{ MODKEY,     XK_w,                     spawn,         {.v = (const char*[]){ BROWSER, NULL } } },
+{ MODKEY,     XK_3,                     spawn,         {.v = (const char*[]){ BROWSER, NULL } } },
 
 /* quick switch */
 /* { MODKEY,     XK_j,                     spawn,         SHCMD("wmctrl -ia $(wmctrl -xpl | grep "st\.St" | sort -k3)") }, */
@@ -228,7 +229,7 @@ TAGKEYS(XK_7,      9)
 
 /* dmenu */
 { MODKEYS, XK_semicolon, spawn, {.v = (const char*[]){ "dmenu_run",    NULL } } },
-/* { MODKEYC, XK_semicolon, spawn, {.v = (const char*[]){ "dmenuunicode", NULL } } }, */
+{ MODKEY,  XK_slash,     spawn, {.v = (const char*[]){ "dmenuunicode", NULL } } },
 /* { MODKEYC, XK_p,         spawn, {.v = (const char*[]){ "passmenu",     NULL } } }, */
 
 /* gui app */
@@ -257,8 +258,8 @@ TAGKEYS(XK_7,      9)
 
 /* maim_record */
 /* { 0,       XK_Print,                 spawn,         SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") }, */
-{ MODKEY,     XK_x,                     spawn,         {.v = (const char*[]){ "maimpick", NULL } } },
 { MODKEY,     XK_z,                     spawn,         SHCMD("killall screenkey || screenkey &") },
+{ MODKEY,     XK_x,                     spawn,         {.v = (const char*[]){ "maimpick", NULL } } },
 { MODKEY,     XK_c,                     spawn,         {.v = (const char*[]){ "dmenurecord", NULL } } },
 { MODKEY,     XK_v,                     spawn,         {.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
 
