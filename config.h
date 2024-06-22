@@ -45,7 +45,7 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "s", "d", "f", "g", "h", "j", "k", "l" };
+static const char *tags[] = { "s", "d", "f", "g", "h", "j", "k", "l", "w", "e", "r", "t", "y", "u", "i", "o" };
 
 static const Rule rules[] = {
 /* xprop(1):
@@ -143,7 +143,7 @@ ResourcePref resources[] = {
 
 static Key keys[] = {
 /* modifier, key,  function, argument */
-{ MODKEY, XK_q, spawn, {.v = (const char*[]){ "sysact", NULL } } },
+{ MODKEY, XK_BackSpace, spawn, {.v = (const char*[]){ "sysact", NULL } } },
 
 /* { MODKEY,  XK_comma,  focusmon, {.i = -1 } }, */
 /* { MODKEYC, XK_comma,  tagmon,   {.i = -1 } }, */
@@ -152,6 +152,7 @@ static Key keys[] = {
 
 STACKKEYS(MODKEY,  focus)
 STACKKEYS(MODKEYC, push)
+
 TAGKEYS(XK_s,      0)
 TAGKEYS(XK_d,      1)
 TAGKEYS(XK_f,      2)
@@ -161,13 +162,22 @@ TAGKEYS(XK_j,      5)
 TAGKEYS(XK_k,      6)
 TAGKEYS(XK_l,      7)
 
+TAGKEYS(XK_w,      8)
+TAGKEYS(XK_e,      9)
+TAGKEYS(XK_r,      10)
+TAGKEYS(XK_t,      11)
+TAGKEYS(XK_y,      12)
+TAGKEYS(XK_u,      13)
+TAGKEYS(XK_i,      14)
+TAGKEYS(XK_o,      15)
+
 { MODKEY,  XK_a,   view,      {.ui = ~0 } },
 { MODKEYC, XK_a,   tag,       {.ui = ~0 } },
 /* { MODKEY,  XK_k,   shiftview, { .i = -1 } }, */
 /* { MODKEYC, XK_k,   shifttag,  { .i = -1 } }, */
 /* { MODKEY,  XK_j,   shiftview, { .i = 1 } }, */
 /* { MODKEYC, XK_j,   shifttag,  { .i = 1 } }, */
-{ MODKEY,  XK_u,   view,      {0} },         // view previous tag
+{ MODKEY,  XK_Tab, view,      {0} },         // view previous tag
 
 { MODKEY,  XK_period,       setlayout,       {.v = &layouts[0]} },
 { MODKEY,  XK_comma,        setlayout,       {.v = &layouts[1]} },
@@ -184,11 +194,11 @@ TAGKEYS(XK_l,      7)
 /* { MODKEY,  XK_,             incrgaps,        {.i = -3 } }, */
 /* { MODKEY,  XK_,             defaultgaps,     {0} }, */
 
-{ MODKEY, XK_w,          killclient,     {0} }, // window close
+{ MODKEY, XK_q,          killclient,     {0} }, // window close
 /* { MODKEY, XK_m,          zoom,           {0} }, // window first (if already first, move second window to first) */
-{ MODKEY, XK_o,          togglefloating, {0} }, // window float
+{ MODKEY, XK_grave,      togglefloating, {0} }, // window float
 /* { MODKEY, XK_apostrophe, togglesticky,   {0} }, // window sticky */
-{ MODKEY, XK_i,          togglefullscr,  {0} }, // window full screen
+{ MODKEY, XK_backslash,  togglefullscr,  {0} }, // window full screen
 
 
 
