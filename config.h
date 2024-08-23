@@ -98,7 +98,9 @@ static const Layout layouts[] = {
 #define STACKKEYS(MOD,ACTION) \
 { MOD,  XK_n,   ACTION##stack,  {.i = INC(+1) } }, \
 { MOD,  XK_p,   ACTION##stack,  {.i = INC(-1) } }, \
-{ MOD,  XK_m,   ACTION##stack,  {.i = 0 } }, \
+{ MOD,  XK_j,   ACTION##stack,  {.i = 0 } }, \
+{ MOD,  XK_k,   ACTION##stack,  {.i = 1 } }, \
+{ MOD,  XK_l,   ACTION##stack,  {.i = 2 } }, \
 /* { MOD, XK_grave, ACTION##stack, {.i = PREVSEL } }, \ */
 /* { MOD, XK_a,     ACTION##stack, {.i = 1 } }, \ */
 /* { MOD, XK_z,     ACTION##stack, {.i = 2 } }, \ */
@@ -158,9 +160,9 @@ TAGKEYS(XK_d,      1)
 TAGKEYS(XK_f,      2)
 TAGKEYS(XK_g,      3)
 TAGKEYS(XK_h,      4)
-TAGKEYS(XK_j,      5)
-TAGKEYS(XK_k,      6)
-TAGKEYS(XK_l,      7)
+// TAGKEYS(XK_j,      5)
+// TAGKEYS(XK_k,      6)
+// TAGKEYS(XK_l,      7)
 
 TAGKEYS(XK_w,      8)
 TAGKEYS(XK_e,      9)
