@@ -87,14 +87,14 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod4Mask
-#define MODKEYC MODKEY|ControlMask
 #define MODKEYA MODKEY|Mod1Mask
+#define MODKEYC MODKEY|ControlMask
 #define MODKEYS MODKEY|ShiftMask
 #define TAGKEYS(KEY,TAG) \
 { MODKEY,                       KEY,            view,           {.ui = 1 << TAG} }, \
-{ MODKEYA,                      KEY,            toggleview,     {.ui = 1 << TAG} }, \
+{ MODKEYS,                      KEY,            toggleview,     {.ui = 1 << TAG} }, \
 { MODKEYC,                      KEY,            tag,            {.ui = 1 << TAG} }, \
-{ MODKEYS,                      KEY,            toggletag,      {.ui = 1 << TAG} },
+// { MODKEYS,                      KEY,            toggletag,      {.ui = 1 << TAG} },
 #define STACKKEYS(MOD,ACTION) \
 { MOD,  XK_n,   ACTION##stack,  {.i = INC(+1) } }, \
 { MOD,  XK_p,   ACTION##stack,  {.i = INC(-1) } }, \
