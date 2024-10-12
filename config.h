@@ -73,16 +73,19 @@ static const int attachdirection = 4;    /* 0 default, 1 above, 2 aside, 3 below
 
 static const Layout layouts[] = {
 /* symbol     arrange function */
+
 { "TTT",        bstack },                       /* Master on top,           slaves on bottom */
 { "[]=",        tile },                         /* Default: Master on left, slaves on right */
-{ "[M]",        monocle },                      /* All windows on top of eachother */
-{ "[@]",        spiral },                       /* Fibonacci spiral */
-{ "[\\]",       dwindle },                      /* Decreasing in size right and leftward */
-{ "[D]",        deck },                         /* Master on left,          slaves in monocle-like mode on right */
-{ "|M|",        centeredmaster },               /* Master in middle,        slaves on sides */
-{ ">M>",        centeredfloatingmaster },       /* Same but master floats */
-{ "><>",        NULL },                         /* no layout function means floating behavior */
+// { "[M]",        monocle },                      /* All windows on top of eachother */
+// { "[@]",        spiral },                       /* Fibonacci spiral */
+// { "[\\]",       dwindle },                      /* Decreasing in size right and leftward */
+// { "[D]",        deck },                         /* Master on left,          slaves in monocle-like mode on right */
+// { "|M|",        centeredmaster },               /* Master in middle,        slaves on sides */
+// { ">M>",        centeredfloatingmaster },       /* Same but master floats */
+// { "><>",        NULL },                         /* no layout function means floating behavior */
+
 { NULL,         NULL },
+
 };
 
 /* key definitions */
@@ -100,7 +103,7 @@ static const Layout layouts[] = {
 { MOD,  XK_p,   ACTION##stack,  {.i = INC(-1) } }, \
 { MOD,  XK_j,   ACTION##stack,  {.i = 0 } }, \
 { MOD,  XK_k,   ACTION##stack,  {.i = 1 } }, \
-{ MOD,  XK_l,   ACTION##stack,  {.i = 2 } }, \
+/* { MOD, XK_l,     ACTION##stack, {.i = 2 } }, \ */
 /* { MOD, XK_grave, ACTION##stack, {.i = PREVSEL } }, \ */
 /* { MOD, XK_a,     ACTION##stack, {.i = 1 } }, \ */
 /* { MOD, XK_z,     ACTION##stack, {.i = 2 } }, \ */
@@ -181,9 +184,12 @@ TAGKEYS(XK_o,      15)
 /* { MODKEYC, XK_j,   shifttag,  { .i = 1 } }, */
 { MODKEY,  XK_Tab, view,      {0} },         // view previous tag
 
-{ MODKEY,  XK_period,       setlayout,       {.v = &layouts[0]} },
-{ MODKEY,  XK_comma,        setlayout,       {.v = &layouts[1]} },
-{ MODKEY,  XK_semicolon,    setlayout,       {.v = &layouts[2]} },
+// { MODKEY, XK_period,    setlayout,   {.v = &layouts[0]} },
+// { MODKEY, XK_comma,     setlayout,   {.v = &layouts[1]} },
+// { MODKEY, XK_semicolon, setlayout,   {.v = &layouts[2]} },
+
+// { MODKEY, XK_comma, cyclelayout, {.i = -1 } },
+{ MODKEY, XK_l, cyclelayout, {.i = +1 } },
 
 /* { MODKEY,  XK_minus,        incnmaster,      {.i = -1 } }, */
 /* { MODKEY,  XK_equal,        incnmaster,      {.i = +1 } }, */
@@ -196,11 +202,11 @@ TAGKEYS(XK_o,      15)
 /* { MODKEY,  XK_,             incrgaps,        {.i = -3 } }, */
 /* { MODKEY,  XK_,             defaultgaps,     {0} }, */
 
-{ MODKEY, XK_q,          killclient,     {0} }, // window close
+{ MODKEY, XK_q, killclient,     {0} }, // window close
+{ MODKEY, XK_b, togglefloating, {0} }, // window float
+{ MODKEY, XK_m, togglefullscr,  {0} }, // window full screen
 /* { MODKEY, XK_m,          zoom,           {0} }, // window first (if already first, move second window to first) */
-{ MODKEY, XK_grave,      togglefloating, {0} }, // window float
 /* { MODKEY, XK_apostrophe, togglesticky,   {0} }, // window sticky */
-{ MODKEY, XK_backslash,  togglefullscr,  {0} }, // window full screen
 
 
 
