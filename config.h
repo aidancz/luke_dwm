@@ -148,7 +148,7 @@ ResourcePref resources[] = {
 
 static Key keys[] = {
 /* modifier, key,  function, argument */
-{ MODKEY, XK_BackSpace, spawn, {.v = (const char*[]){ "sysact", NULL } } },
+{ MODKEY, XK_BackSpace, spawn, {.v = (const char*[]){ "system-actions", NULL } } },
 
 /* { MODKEY,  XK_comma,  focusmon, {.i = -1 } }, */
 /* { MODKEYC, XK_comma,  tagmon,   {.i = -1 } }, */
@@ -276,9 +276,9 @@ TAGKEYS(XK_o,      15)
 /* maim_record */
 /* { 0,       XK_Print,                 spawn,         SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") }, */
 { MODKEY,     XK_z,                     spawn,         SHCMD("killall screenkey || screenkey &") },
-{ MODKEY,     XK_x,                     spawn,         {.v = (const char*[]){ "maimpick", NULL } } },
-{ MODKEY,     XK_c,                     spawn,         {.v = (const char*[]){ "dmenurecord", NULL } } },
-{ MODKEY,     XK_v,                     spawn,         {.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
+{ MODKEY,     XK_x,                     spawn,         {.v = (const char*[]){ "screenshot", NULL } } },
+{ MODKEY,     XK_c,                     spawn,         {.v = (const char*[]){ "screencast", NULL } } },
+{ MODKEY,     XK_v,                     spawn,         {.v = (const char*[]){ "screencast", "kill_recording", NULL } } },
 
 /* unknown */
 /* { MODKEY,  XK_minus,                 spawn,         SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") }, */
@@ -291,45 +291,45 @@ TAGKEYS(XK_o,      15)
 
 
 { MODKEY,     XK_F1,                    spawn,         SHCMD("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -") },
-{ MODKEY,     XK_F2,                    spawn,         {.v = (const char*[]){ "tutorialvids", NULL } } },
-{ MODKEY,     XK_F3,                    spawn,         {.v = (const char*[]){ "displayselect", NULL } } },
-{ MODKEY,     XK_F4,                    spawn,         SHCMD(TERMINAL " -e pulsemixer; kill -44 $(pidof dwmblocks)") },
-{ MODKEY,     XK_F5,                    xrdb,          {.v = NULL } },
-{ MODKEY,     XK_F6,                    spawn,         {.v = (const char*[]){ "torwrap", NULL } } },
-{ MODKEY,     XK_F7,                    spawn,         {.v = (const char*[]){ "td-toggle", NULL } } },
-{ MODKEY,     XK_F8,                    spawn,         {.v = (const char*[]){ "mw", "-Y", NULL } } },
-{ MODKEY,     XK_F9,                    spawn,         {.v = (const char*[]){ "dmenumount", NULL } } },
-{ MODKEY,     XK_F10,                   spawn,         {.v = (const char*[]){ "dmenuumount", NULL } } },
-{ MODKEY,     XK_F11,                   spawn,         SHCMD("mpv --untimed --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
-{ MODKEY,     XK_F12,                   spawn,         SHCMD("remaps") },
-{ 0,          XF86XK_AudioMute,         spawn,         SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
-{ 0,          XF86XK_AudioRaiseVolume,  spawn,         SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%+; kill -44 $(pidof dwmblocks)") },
-{ 0,          XF86XK_AudioLowerVolume,  spawn,         SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-; kill -44 $(pidof dwmblocks)") },
-{ 0,          XF86XK_AudioPrev,         spawn,         {.v = (const char*[]){ "mpc", "prev", NULL } } },
-{ 0,          XF86XK_AudioNext,         spawn,         {.v = (const char*[]){ "mpc", "next", NULL } } },
-{ 0,          XF86XK_AudioPause,        spawn,         {.v = (const char*[]){ "mpc", "pause", NULL } } },
-{ 0,          XF86XK_AudioPlay,         spawn,         {.v = (const char*[]){ "mpc", "play", NULL } } },
-{ 0,          XF86XK_AudioStop,         spawn,         {.v = (const char*[]){ "mpc", "stop", NULL } } },
-{ 0,          XF86XK_AudioRewind,       spawn,         {.v = (const char*[]){ "mpc", "seek", "-10", NULL } } },
-{ 0,          XF86XK_AudioForward,      spawn,         {.v = (const char*[]){ "mpc", "seek", "+10", NULL } } },
-{ 0,          XF86XK_AudioMedia,        spawn,         {.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } },
-{ 0,          XF86XK_AudioMicMute,      spawn,         SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
-/* { 0,       XF86XK_PowerOff,          spawn,         {.v = (const char*[]){ "sysact", NULL } } }, */
-{ 0,          XF86XK_Calculator,        spawn,         {.v = (const char*[]){ TERMINAL, "-e", "bc", "-l", NULL } } },
-{ 0,          XF86XK_Sleep,             spawn,         {.v = (const char*[]){ "sudo", "-A", "zzz", NULL } } },
-{ 0,          XF86XK_WWW,               spawn,         {.v = (const char*[]){ BROWSER, NULL } } },
-{ 0,          XF86XK_DOS,               spawn,         {.v = termcmd } },
-{ 0,          XF86XK_ScreenSaver,       spawn,         SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
-{ 0,          XF86XK_TaskPane,          spawn,         {.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } },
-{ 0,          XF86XK_Mail,              spawn,         SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks") },
-{ 0,          XF86XK_MyComputer,        spawn,         {.v = (const char*[]){ TERMINAL, "-e", "lfub", "/", NULL } } },
-/* { 0,       XF86XK_Battery,           spawn,         SHCMD("") }, */
-{ 0,          XF86XK_Launch1,           spawn,         {.v = (const char*[]){ "xset", "dpms", "force", "off", NULL } } },
-{ 0,          XF86XK_TouchpadToggle,    spawn,         SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
-{ 0,          XF86XK_TouchpadOff,       spawn,         {.v = (const char*[]){ "synclient", "TouchpadOff=1", NULL } } },
-{ 0,          XF86XK_TouchpadOn,        spawn,         {.v = (const char*[]){ "synclient", "TouchpadOff=0", NULL } } },
-{ 0,          XF86XK_MonBrightnessUp,   spawn,         {.v = (const char*[]){ "xbacklight", "-inc", "15", NULL } } },
-{ 0,          XF86XK_MonBrightnessDown, spawn,         {.v = (const char*[]){ "xbacklight", "-dec", "15", NULL } } },
+// { MODKEY,     XK_F2,                    spawn,         {.v = (const char*[]){ "tutorialvids", NULL } } },
+// { MODKEY,     XK_F3,                    spawn,         {.v = (const char*[]){ "displayselect", NULL } } },
+// { MODKEY,     XK_F4,                    spawn,         SHCMD(TERMINAL " -e pulsemixer; kill -44 $(pidof dwmblocks)") },
+// { MODKEY,     XK_F5,                    xrdb,          {.v = NULL } },
+// { MODKEY,     XK_F6,                    spawn,         {.v = (const char*[]){ "torwrap", NULL } } },
+// { MODKEY,     XK_F7,                    spawn,         {.v = (const char*[]){ "td-toggle", NULL } } },
+// { MODKEY,     XK_F8,                    spawn,         {.v = (const char*[]){ "mw", "-Y", NULL } } },
+// { MODKEY,     XK_F9,                    spawn,         {.v = (const char*[]){ "dmenumount", NULL } } },
+// { MODKEY,     XK_F10,                   spawn,         {.v = (const char*[]){ "dmenuumount", NULL } } },
+// { MODKEY,     XK_F11,                   spawn,         SHCMD("mpv --untimed --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
+// { MODKEY,     XK_F12,                   spawn,         SHCMD("remaps") },
+// { 0,          XF86XK_AudioMute,         spawn,         SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
+// { 0,          XF86XK_AudioRaiseVolume,  spawn,         SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%+; kill -44 $(pidof dwmblocks)") },
+// { 0,          XF86XK_AudioLowerVolume,  spawn,         SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-; kill -44 $(pidof dwmblocks)") },
+// { 0,          XF86XK_AudioPrev,         spawn,         {.v = (const char*[]){ "mpc", "prev", NULL } } },
+// { 0,          XF86XK_AudioNext,         spawn,         {.v = (const char*[]){ "mpc", "next", NULL } } },
+// { 0,          XF86XK_AudioPause,        spawn,         {.v = (const char*[]){ "mpc", "pause", NULL } } },
+// { 0,          XF86XK_AudioPlay,         spawn,         {.v = (const char*[]){ "mpc", "play", NULL } } },
+// { 0,          XF86XK_AudioStop,         spawn,         {.v = (const char*[]){ "mpc", "stop", NULL } } },
+// { 0,          XF86XK_AudioRewind,       spawn,         {.v = (const char*[]){ "mpc", "seek", "-10", NULL } } },
+// { 0,          XF86XK_AudioForward,      spawn,         {.v = (const char*[]){ "mpc", "seek", "+10", NULL } } },
+// { 0,          XF86XK_AudioMedia,        spawn,         {.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } },
+// { 0,          XF86XK_AudioMicMute,      spawn,         SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
+// /* { 0,       XF86XK_PowerOff,          spawn,         {.v = (const char*[]){ "sysact", NULL } } }, */
+// { 0,          XF86XK_Calculator,        spawn,         {.v = (const char*[]){ TERMINAL, "-e", "bc", "-l", NULL } } },
+// { 0,          XF86XK_Sleep,             spawn,         {.v = (const char*[]){ "sudo", "-A", "zzz", NULL } } },
+// { 0,          XF86XK_WWW,               spawn,         {.v = (const char*[]){ BROWSER, NULL } } },
+// { 0,          XF86XK_DOS,               spawn,         {.v = termcmd } },
+// { 0,          XF86XK_ScreenSaver,       spawn,         SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
+// { 0,          XF86XK_TaskPane,          spawn,         {.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } },
+// { 0,          XF86XK_Mail,              spawn,         SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks") },
+// { 0,          XF86XK_MyComputer,        spawn,         {.v = (const char*[]){ TERMINAL, "-e", "lfub", "/", NULL } } },
+// /* { 0,       XF86XK_Battery,           spawn,         SHCMD("") }, */
+// { 0,          XF86XK_Launch1,           spawn,         {.v = (const char*[]){ "xset", "dpms", "force", "off", NULL } } },
+// { 0,          XF86XK_TouchpadToggle,    spawn,         SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
+// { 0,          XF86XK_TouchpadOff,       spawn,         {.v = (const char*[]){ "synclient", "TouchpadOff=1", NULL } } },
+// { 0,          XF86XK_TouchpadOn,        spawn,         {.v = (const char*[]){ "synclient", "TouchpadOff=0", NULL } } },
+// { 0,          XF86XK_MonBrightnessUp,   spawn,         {.v = (const char*[]){ "xbacklight", "-inc", "15", NULL } } },
+// { 0,          XF86XK_MonBrightnessDown, spawn,         {.v = (const char*[]){ "xbacklight", "-dec", "15", NULL } } },
 
 
 
@@ -371,9 +371,9 @@ static Button buttons[] = {
 { ClkStatusText,        0,              Button3,        sigdwmblocks,   {.i = 3} },
 { ClkStatusText,        0,              Button4,        sigdwmblocks,   {.i = 4} },
 { ClkStatusText,        0,              Button5,        sigdwmblocks,   {.i = 5} },
-{ ClkStatusText,        ShiftMask,      Button1,        sigdwmblocks,   {.i = 6} },
+// { ClkStatusText,        ShiftMask,      Button1,        sigdwmblocks,   {.i = 6} },
 #endif
-{ ClkStatusText,        ShiftMask,      Button3,        spawn,          SHCMD(TERMINAL " -e nvim ~/.local/src/dwmblocks/config.h") },
+// { ClkStatusText,        ShiftMask,      Button3,        spawn,          SHCMD(TERMINAL " -e nvim ~/.local/src/dwmblocks/config.h") },
 { ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 { ClkClientWin,         MODKEY,         Button2,        defaultgaps,    {0} },
 { ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
