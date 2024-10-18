@@ -74,8 +74,8 @@ static const int attachdirection = 4;    /* 0 default, 1 above, 2 aside, 3 below
 static const Layout layouts[] = {
 /* symbol     arrange function */
 
-{ "TTT",        bstack },                       /* Master on top,           slaves on bottom */
-{ "[]=",        tile },                         /* Default: Master on left, slaves on right */
+{ "0",        bstack },                       /* Master on top,           slaves on bottom */
+{ "1",        tile },                         /* Default: Master on left, slaves on right */
 // { "[M]",        monocle },                      /* All windows on top of eachother */
 // { "[@]",        spiral },                       /* Fibonacci spiral */
 // { "[\\]",       dwindle },                      /* Decreasing in size right and leftward */
