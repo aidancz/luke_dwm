@@ -1011,9 +1011,10 @@ drawbar(Monitor *m)
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
 		x += w;
 	}
-	w = blw = TEXTW(m->ltsymbol);
-	drw_setscheme(drw, scheme[SchemeNorm]);
-	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
+	// w = blw = TEXTW(m->ltsymbol);
+	// drw_setscheme(drw, scheme[SchemeNorm]);
+	// x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
+	// https://www.reddit.com/r/dwm/comments/zv9otz/how_can_i_remove_the_layout_indicator/
 
 	if ((w = m->ww - tw - x) > bh) {
 		if (m->sel) {
