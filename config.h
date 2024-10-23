@@ -299,9 +299,9 @@ TAGKEYS(XK_o,      15)
 /* maim_record */
 /* { 0,       XK_Print,                 spawn,         SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") }, */
 { MODKEY,     XK_z,                     spawn,         SHCMD("killall screenkey || screenkey &") },
-{ MODKEY,     XK_x,                     spawn,         {.v = (const char*[]){ "screenshot", NULL } } },
-{ MODKEY,     XK_c,                     spawn,         {.v = (const char*[]){ "screencast", NULL } } },
-{ MODKEY,     XK_v,                     spawn,         {.v = (const char*[]){ "screencast", "kill_recording", NULL } } },
+{ MODKEY,     XK_x,                     spawn,         {.v = (const char*[]){ "screen-shot", NULL } } },
+{ MODKEY,     XK_c,                     spawn,         {.v = (const char*[]){ "screen-cast", NULL } } },
+{ MODKEY,     XK_v,                     spawn,         {.v = (const char*[]){ "screen-annotate", NULL } } },
 
 /* unknown */
 /* { MODKEY,  XK_minus,                 spawn,         SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") }, */
