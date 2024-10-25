@@ -301,7 +301,8 @@ TAGKEYS(XK_o,      15)
 { MODKEY,     XK_z,                     spawn,         SHCMD("killall screenkey || screenkey &") },
 { MODKEY,     XK_x,                     spawn,         {.v = (const char*[]){ "screen-shot", NULL } } },
 { MODKEY,     XK_c,                     spawn,         {.v = (const char*[]){ "screen-cast", NULL } } },
-{ MODKEY,     XK_v,                     spawn,         {.v = (const char*[]){ "screen-annotate", NULL } } },
+{ MODKEY,     XK_v,                     spawn,         SHCMD("killall gromit-mpx || gromit-mpx -o 1 -a &") },
+{ MODKEY,     XK_b,                     spawn,         SHCMD("killall stalonetray || stalonetray &") },
 
 /* unknown */
 /* { MODKEY,  XK_minus,                 spawn,         SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") }, */
