@@ -170,7 +170,10 @@ ResourcePref resources[] = {
 
 static Key keys[] = {
 /* modifier, key,  function, argument */
-{ MODKEY, XK_BackSpace, spawn, {.v = (const char*[]){ "system-actions", NULL } } },
+
+{ MODKEY,  XK_q, killclient, {0} },
+{ MODKEY,  XK_0, killclient, {0} },
+{ MODKEYC, XK_0, spawn,      {.v = (const char*[]){ "system-actions", NULL } } },
 
 /* { MODKEY,  XK_comma,  focusmon, {.i = -1 } }, */
 /* { MODKEYC, XK_comma,  tagmon,   {.i = -1 } }, */
@@ -224,8 +227,6 @@ TAGKEYS(XK_o,      15)
 /* { MODKEY,  XK_,             incrgaps,        {.i = -3 } }, */
 /* { MODKEY,  XK_,             defaultgaps,     {0} }, */
 
-{ MODKEY, XK_q, killclient,     {0} }, // window close
-{ MODKEY, XK_0, killclient,     {0} }, // window close
 { MODKEY, XK_period, togglefloating, {0} }, // window float
 { MODKEY, XK_apostrophe, togglefullscr,  {0} }, // window full screen
 /* { MODKEY, XK_m,          zoom,           {0} }, // window first (if already first, move second window to first) */
