@@ -79,7 +79,6 @@ static const Rule rules[] = {
 // { TERMCLASS, "spcalc", NULL,           SPTAG(1),  1,          1,          0,         -1 },
 
 { TERMCLASS, NULL,     NULL,           0,         0,          1,          0,         -1 },
-{ TERMCLASS, NULL,     "nvim",         0,         0,          0,          0,         -1 },
 { NULL,      NULL,     "Event Tester", 0,         0,          0,          1,         -1 }, /* xev */
 };
 
