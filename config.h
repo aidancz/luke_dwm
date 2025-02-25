@@ -170,9 +170,10 @@ ResourcePref resources[] = {
 static Key keys[] = {
 /* modifier, key,  function, argument */
 
-{ MODKEY,  XK_q, killclient, {0} },
-{ MODKEY,  XK_0, killclient, {0} },
-{ MODKEYC, XK_0, spawn,      {.v = (const char*[]){ "system-actions", NULL } } },
+{ MODKEY,  XK_q,      killclient, {0} },
+{ MODKEY,  XK_Escape, killclient, {0} },
+{ MODKEYC, XK_q,      spawn,      {.v = (const char*[]){ "system-actions", NULL } } },
+{ MODKEYC, XK_Escape, spawn,      {.v = (const char*[]){ "system-actions", NULL } } },
 
 /* { MODKEY,  XK_comma,  focusmon, {.i = -1 } }, */
 /* { MODKEYC, XK_comma,  tagmon,   {.i = -1 } }, */
@@ -217,8 +218,8 @@ TAGKEYS(XK_o,      15)
 
 /* { MODKEY,  XK_minus,        incnmaster,      {.i = -1 } }, */
 /* { MODKEY,  XK_equal,        incnmaster,      {.i = +1 } }, */
-{ MODKEY, XK_minus, setmfact, {.f = -0.05} },
-{ MODKEY, XK_equal, setmfact, {.f = +0.05} },
+{ MODKEY, XK_bracketleft,  setmfact, {.f = -0.05} },
+{ MODKEY, XK_bracketright, setmfact, {.f = +0.05} },
 /* { MODKEY,  XK_,             togglebar,       {0} }, */
 /* { MODKEY,  XK_,             togglegaps,      {0} }, */
 /* { MODKEY,  XK_,             togglesmartgaps, {0} }, */
@@ -226,15 +227,14 @@ TAGKEYS(XK_o,      15)
 /* { MODKEY,  XK_,             incrgaps,        {.i = -3 } }, */
 /* { MODKEY,  XK_,             defaultgaps,     {0} }, */
 
-{ MODKEY, XK_period, togglefloating, {0} }, // window float
-{ MODKEY, XK_apostrophe, togglefullscr,  {0} }, // window full screen
+{ MODKEY, XK_backslash, togglefloating, {0} }, // window float
+{ MODKEY, XK_period,    togglefullscr,  {0} }, // window full screen
 /* { MODKEY, XK_m,          zoom,           {0} }, // window first (if already first, move second window to first) */
 /* { MODKEY, XK_apostrophe, togglesticky,   {0} }, // window sticky */
 
 
 
 /* terminal */
-{ MODKEY,     XK_1,                     spawn,         {.v = termcmd } },
 { MODKEY,     XK_Return,                spawn,         {.v = termcmd } },
 { MODKEY,     XK_space,                 spawn,         {.v = termcmd } },
 /* { MODKEY,     XK_k,                     spawn,         {.v = (const char*[]){ "sd", NULL } } }, */
@@ -254,10 +254,9 @@ TAGKEYS(XK_o,      15)
 /* { MODKEYS,    XK_e,                     spawn,         {.v = (const char*[]){ TERMINAL, "-e", "emacs", "-nw", NULL } } }, */
 /* { MODKEYC,    XK_e,                     spawn,         {.v = (const char*[]){ "emacsclient", "-c", NULL } } }, */
 /* { MODKEY,     XK_e,                     spawn,         {.v = (const char*[]){ "emacs", NULL } } }, */
-{ MODKEY,     XK_2,                     spawn,         {.v = (const char*[]){ "emacs", NULL } } },
 
 /* browser */
-{ MODKEY,     XK_3,                     spawn,         {.v = (const char*[]){ BROWSER, NULL } } },
+{ MODKEY,     XK_Delete,                spawn,         {.v = (const char*[]){ BROWSER, NULL } } },
 
 /* quick switch */
 /* { MODKEY,     XK_j,                     spawn,         SHCMD("wmctrl -ia $(wmctrl -xpl | grep "st\.St" | sort -k3)") }, */
